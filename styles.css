@@ -1,17 +1,82 @@
 /* ===== CSS Reset & Fonts ===== */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap');
 
+/* Values below are taken from the Figma file (FIGMA / "Desktop 1440px",
+   "Tablet 768px", "Mobile 375px") */
 :root {
-  --primary: #4555D3;
-  --primary-hover: #3544B8;
-  --text-dark: #111827;
-  --text-gray: #4B5563;
-  --text-muted: #6B7280;
-  --bg-hero: #F7F9FD;
-  --bg-card: #F8FAFF;
-  --card-border: #EDF2F7;
-  --font-main: 'Plus Jakarta Sans', 'Roboto', system-ui, -apple-system, sans-serif;
-  --max-w: 1280px;
+  --primary: #4356d6;
+  --primary-dark: #051aa3;          /* card hover border + title */
+  --text-dark: #000000;             /* headings / body text in Figma */
+  --text-body: #282828;             /* nav links */
+  --bg-hero: #fafbff;
+  --bg-card: #fafbff;
+  --card-border: #e1e7ff;
+  --font-main: 'Roboto', Helvetica, system-ui, -apple-system, sans-serif;
+  --max-w: 1240px;
+  --nav-max-w: 1440px;
+
+  --des-h1-heading-font-family: "Roboto", Helvetica;
+  --des-h1-heading-font-weight: 700;
+  --des-h1-heading-font-size: 64px;
+  --des-h1-heading-letter-spacing: 0px;
+  --des-h1-heading-line-height: 85px;
+  --des-h1-heading-font-style: normal;
+  --des-h2-heading-font-family: "Roboto", Helvetica;
+  --des-h2-heading-font-weight: 600;
+  --des-h2-heading-font-size: 48px;
+  --des-h2-heading-letter-spacing: 0px;
+  --des-h2-heading-line-height: 70px;
+  --des-h2-heading-font-style: normal;
+  --des-large-title-font-family: "Roboto", Helvetica;
+  --des-large-title-font-weight: 600;
+  --des-large-title-font-size: 24px;
+  --des-large-title-letter-spacing: 0px;
+  --des-large-title-line-height: 32px;
+  --des-large-title-font-style: normal;
+  --des-body-regular-font-family: "Roboto", Helvetica;
+  --des-body-regular-font-weight: 400;
+  --des-body-regular-font-size: 18px;
+  --des-body-regular-letter-spacing: 0px;
+  --des-body-regular-line-height: 32px;
+  --des-body-regular-font-style: normal;
+
+  --ta-h2-heading-font-family: "Roboto", Helvetica;
+  --ta-h2-heading-font-weight: 600;
+  --ta-h2-heading-font-size: 46px;
+  --ta-h2-heading-letter-spacing: 0px;
+  --ta-h2-heading-line-height: 60px;
+  --ta-h2-heading-font-style: normal;
+  --ta-large-title-font-family: "Roboto", Helvetica;
+  --ta-large-title-font-weight: 600;
+  --ta-large-title-font-size: 24px;
+  --ta-large-title-letter-spacing: 0px;
+  --ta-large-title-line-height: 32px;
+  --ta-large-title-font-style: normal;
+  --ta-body-regular-font-family: "Roboto", Helvetica;
+  --ta-body-regular-font-weight: 400;
+  --ta-body-regular-font-size: 18px;
+  --ta-body-regular-letter-spacing: 0px;
+  --ta-body-regular-line-height: 32px;
+  --ta-body-regular-font-style: normal;
+
+  --mo-h2-heading-font-family: "Roboto", Helvetica;
+  --mo-h2-heading-font-weight: 600;
+  --mo-h2-heading-font-size: 34px;
+  --mo-h2-heading-letter-spacing: 0px;
+  --mo-h2-heading-line-height: 48px;
+  --mo-h2-heading-font-style: normal;
+  --mo-large-title-font-family: "Roboto", Helvetica;
+  --mo-large-title-font-weight: 600;
+  --mo-large-title-font-size: 22px;
+  --mo-large-title-letter-spacing: 0px;
+  --mo-large-title-line-height: 32px;
+  --mo-large-title-font-style: normal;
+  --mo-body-regular-font-family: "Roboto", Helvetica;
+  --mo-body-regular-font-weight: 400;
+  --mo-body-regular-font-size: 18px;
+  --mo-body-regular-letter-spacing: 0px;
+  --mo-body-regular-line-height: 32px;
+  --mo-body-regular-font-style: normal;
 }
 
 * {
@@ -49,52 +114,56 @@ img {
   display: block;
 }
 
-/* ===== Buttons ===== */
+/* ===== Buttons (Figma: h46, padding 14/22, radius 8, gap 10, Roboto Medium 18) ===== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 38px;
-  padding: 0 28px;
+  height: 46px;
+  padding: 14px 22px;
   border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: var(--font-main);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 
+/* Filled: 1px border -> hover is transparent with a 2px border.
+   The inset box-shadow fakes the 2nd pixel so the button doesn't change size. */
 .btn-primary {
   background: var(--primary);
   color: #ffffff;
-  border: 1.5px solid var(--primary);
+  border: 1px solid var(--primary);
 }
 
 .btn-primary:hover {
-  background: white;
-  border-color: var(--primary-hover);
-  color: var(--primary-hover);
-  box-shadow: 0 4px 14px rgba(69, 85, 211, 0.35);
+  background: transparent;
+  color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
 }
 
+/* Outline: 2px border -> hover is filled */
 .btn-outline {
-  background: #ffffff;
+  background: transparent;
   color: var(--primary);
-  border: 1.5px solid var(--primary);
+  border: 2px solid var(--primary);
 }
 
 .btn-outline:hover {
-  background: #3544B8;
-  color: white;
+  background: var(--primary);
+  color: #ffffff;
 }
 
 .telephone-icon {
-  width: 16px;
-  height: 16px;
+  width: 26px;
+  height: 26px;
   transition: filter 0.2s ease;
 }
 
-/* When hovering over the button, tint the white icon to match the blue text (#3544B8 / #4555D3) */
 .btn-primary:hover .telephone-icon {
   filter: brightness(0) saturate(100%) invert(32%) sepia(87%) saturate(2250%) hue-rotate(227deg) brightness(88%) contrast(92%);
 }
@@ -104,13 +173,14 @@ img {
   background: var(--bg-hero);
   width: 100%;
   position: relative;
+  z-index: 50;
 }
 
 .nav {
-  max-width: var(--max-w);
+  max-width: var(--nav-max-w);
   margin: 0 auto;
-  height: 96px;
-  padding: 0 32px;
+  height: 100px;
+  padding: 0 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -120,10 +190,11 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .nav-brand img {
-  height: 38px;
+  height: 58px;               /* Figma logo frame is 158.7 x 58 */
   width: auto;
   object-fit: contain;
 }
@@ -131,65 +202,69 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 26px;
   list-style: none;
 }
 
 .nav-links a {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
-  color: #1F2937;
+  color: var(--text-body);    /* #282828 */
   transition: color 0.2s;
+  text-transform: capitalize;
+  padding: 10px;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;                  /* Figma: 193 - 169 */
+  flex-shrink: 0;
 }
 
 .btn-nav {
-  height: 38px;
-  padding: 0 20px;
+  height: 46px;
+  padding: 14px 22px;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
+  gap: 10px;
 }
 
 .btn-nav img {
-  width: 16px;
-  height: 16px;
+  width: 26px;
+  height: 26px;
 }
 
 .burger-btn {
   display: none;
-  padding: 8px;
+  padding: 0;
 }
 
 .burger-btn img {
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
 }
 
-/* ===== Hero Section ===== */
+/* ===== Hero Section (Figma: content x=72 y=180, banner x=678 y=156) ===== */
 .hero-section {
   background: var(--bg-hero);
   position: relative;
   overflow: hidden;
-  padding: 40px 32px 80px;
+  padding: 56px 23px 66px 72px;
 }
 
 .hero-container {
-  max-width: 1240px;
+  max-width: 1345px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   position: relative;
 }
@@ -197,21 +272,27 @@ img {
 .hero-content {
   display: flex;
   flex-direction: column;
+  gap: 26px;                  /* title / text / checklist / buttons all 26px apart */
   position: relative;
   z-index: 5;
-  flex: 0 0 540px;
-  max-width: 540px;
+  flex: 0 1 606px;
+  max-width: 606px;
+  margin-top: 24px;           /* 180 - 156 */
 }
 
 .hero-title {
-  font-size: 50px;
-  line-height: 1.32;
-  font-weight: 800;
-  color: #0B0F19;
-  letter-spacing: -0.02em;
+  font-size: 64px;
+  line-height: 85px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0;
+  font-family: var(--font-main);
+  text-transform: capitalize;
+  width: 620px;
+  max-width: calc(100% + 14px);
 }
 
-.why-break-mobile {
+.hero-title-break {
   display: none;
 }
 
@@ -225,230 +306,287 @@ img {
 .highlight-underline {
   position: absolute;
   left: 0;
-  bottom: -12px;
+  bottom: -10px;
   width: 100%;
   height: auto;
   pointer-events: none;
 }
 
 .hero-description {
-  margin-top: 45px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: black;
-  max-width: 535px;
-  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #000000;
+  font-weight: 400;
+  font-family: var(--font-main);
+  text-transform: capitalize;
 }
 
 .hero-checklist {
   list-style: none;
-  margin: 40px 0 34px;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 6px;
 }
 
 .hero-checklist li {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #1F2937;
+  gap: 16px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #000000;
+  font-family: var(--font-main);
+  text-transform: capitalize;
 }
 
 .check-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
-.hero-actions .btn {
-  width: 190px;
-  padding: 0;
+.hero-actions .btn-primary,
+.hero-actions .btn-outline {
+  width: 213px;               /* both buttons are 213px wide in Figma */
 }
 
+/* ===== Hero Art ===== */
 .hero-art-wrapper {
   position: relative;
-  z-index: 1;
-  flex: 1 1 auto;
+  flex: 0 1 739.13px;
+  max-width: 739.13px;
+  min-width: 0;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-left: -70px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.hero-art-wrapper img {
+/* Figma banner (illustration + trust badges) is 739.13 x 607 */
+.hero-art-wrapper > img:first-child {
   width: 100%;
-  max-width: 690px;
+  max-width: 739.13px;
   height: auto;
   object-fit: contain;
   display: block;
   pointer-events: none;
 }
 
-/* ===== Why Compliance Section ===== */
+/* ===== Why Compliance Section =====
+   Desktop keeps the 1440 frame (title | description, illustration | cards).
+   Tablet uses the exported frame: a centred column, 20px gaps,
+   a 603.5px intro, a 613.23×594 illustration, and cards centred in 594px. */
 .why-section {
   background: #ffffff;
-  padding: 80px 32px 100px;
+  padding: 50px 100px;
   position: relative;
+  overflow: hidden;
 }
 
 .why-container {
-  max-width: 1180px;
+  width: 100%;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 603.5px) minmax(0, 603.5px);
   grid-template-areas:
     "header desc"
     "visual cards";
-  column-gap: 36px;
-  row-gap: 24px;
+  column-gap: 33px;
+  row-gap: 36px;
   align-items: start;
+  justify-content: center;
+  position: relative;
 }
 
-.why-header {
-  grid-area: header;
+/* Title and description are one group in the export. On desktop they
+   become separate grid items so they sit side by side. */
+.why-intro {
+  display: contents;
 }
 
 .why-title {
-  font-size: 40px;
-  line-height: 1.22;
-  font-weight: 700;
-  color: #0B0F19;
-  letter-spacing: -0.01em;
+  grid-area: header;
+  display: block;
+  width: 100%;
+  max-width: 603.5px;
+  margin-top: -1px;
+  font-family: var(--des-h2-heading-font-family);
+  font-weight: var(--des-h2-heading-font-weight);
+  font-size: var(--des-h2-heading-font-size);
+  letter-spacing: var(--des-h2-heading-letter-spacing);
+  line-height: var(--des-h2-heading-line-height);
+  font-style: var(--des-h2-heading-font-style);
+  color: #000000;
+  text-transform: capitalize;
 }
 
 .why-title .accent {
-  color: var(--primary);
-}
-
-.why-description-box {
-  grid-area: desc;
-  padding-top: 8px;
+  color: #4356d6;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  font-style: inherit;
 }
 
 .why-description {
-  font-size: 15px;
-  line-height: 1.65;
-  color: black;
-  font-weight: 500;
-  width: 34rem;
+  grid-area: desc;
+  width: 100%;
+  max-width: 603.5px;
+  margin-top: -1px;
+  align-self: center;
+  font-family: var(--des-body-regular-font-family);
+  font-weight: var(--des-body-regular-font-weight);
+  font-size: var(--des-body-regular-font-size);
+  letter-spacing: var(--des-body-regular-letter-spacing);
+  line-height: var(--des-body-regular-line-height);
+  font-style: var(--des-body-regular-font-style);
+  color: #000000;
+  text-transform: capitalize;
 }
 
 .why-visual-col {
   grid-area: visual;
   position: relative;
   width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  max-width: 594px;
+  aspect-ratio: 1;
 }
 
+.why-visual-img {
+  width: 100%;
+  max-width: 594px;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: left top;
+}
+
+/* path-20605 sits on the top-right of the illustration (left 535 / width 34 on a 613px group) */
 .curly-vector {
   position: absolute;
-  top: -70px;
-  right: 18%;
+  top: 6px;
+  right: 44px;
   width: 34px;
-  height: auto;
+  height: 128px;
   pointer-events: none;
   z-index: 5;
 }
 
-.why-visual-img {
-  width: 65%;
-  max-width: 440px;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  margin: 70px 0 0 80px;
-}
-
-.why-bottom-arrows {
+.why-section-chevrons {
   position: absolute;
-  bottom: 45px;
-  left: 50px;
-  width: 160px;
+  bottom: -17px;
+  left: calc(-1 * max(100px, (100vw - 1240px) / 2));
+  width: 137.33px;
+  height: auto;
   opacity: 0.9;
   pointer-events: none;
 }
 
+/* Cards fill a 594px-tall column, centred, 40px apart */
 .why-cards-col {
-  margin-top: 80px;
   grid-area: cards;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
   width: 100%;
+  min-height: 594px;
+  align-self: stretch;
+  position: relative;
 }
 
 .feature-card {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 22px 48px 22px 18px;
+  align-items: flex-start;
+  gap: 26px;
+  padding: 20px;
   background: var(--bg-card);
-  border: 1.5px solid #0a0e1812;
-  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
   cursor: pointer;
-  width: 93%;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .feature-card:hover {
-  border-color: #0070F3;
-  background: #FFFFFF;
+  border-color: var(--primary-dark);
+  background: var(--bg-card);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover .feature-title {
+  color: var(--primary-dark);
 }
 
 .feature-icon-wrapper {
   flex-shrink: 0;
   width: 36px;
-  height: 45px;
+  height: 36px;
   display: flex;
-  align-items:first baseline;
-  justify-content:first baseline;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
 }
 
 .feature-icon-wrapper img {
-  width: 85%;
-  height: 100%;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  margin-top: -20px;
 }
 
 .feature-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 11px;
+  flex: 1;
+  min-width: 0;
 }
 
 .feature-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #111827;
-  line-height: 1.3;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: var(--des-large-title-font-family);
+  font-weight: var(--des-large-title-font-weight);
+  font-size: var(--des-large-title-font-size);
+  letter-spacing: var(--des-large-title-letter-spacing);
+  line-height: var(--des-large-title-line-height);
+  font-style: var(--des-large-title-font-style);
+  color: #000000;
+  white-space: nowrap;
+  text-transform: capitalize;
+  transition: color 0.2s ease;
 }
 
 .feature-desc {
-  font-size: 14px;
-  line-height: 1.55;
-  color: black;
-  font-weight: 500;
+  align-self: stretch;
+  height: 59px;
+  font-family: var(--des-body-regular-font-family);
+  font-weight: var(--des-body-regular-font-weight);
+  font-size: var(--des-body-regular-font-size);
+  letter-spacing: var(--des-body-regular-letter-spacing);
+  line-height: var(--des-body-regular-line-height);
+  font-style: var(--des-body-regular-font-style);
+  color: #000000;
+  text-transform: capitalize;
 }
 
 /* ===== Drawer Menu for Tablet / Mobile ===== */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.7);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -460,15 +598,14 @@ img {
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(340px, 85vw);
-  background: #ffffff;
+  width: min(475px, 100vw);   /* tablet drawer = 475px, mobile = 327px (see 600px query) */
+  background: var(--bg-hero);
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 100;
-  padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 
 .menu-open .overlay {
@@ -484,90 +621,107 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
+  padding: 10px 16px;
+  background: var(--bg-hero);
 }
 
 .drawer-top .logo-img {
-  height: 32px;
+  height: 34px;
   width: auto;
 }
 
 .close-btn {
   font-size: 28px;
   line-height: 1;
-  color: var(--primary-hover);
-  padding: 4px 8px;
+  color: var(--text-body);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
 .drawer-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;                  /* items are 44px tall, 84px apart */
+  padding: 50px 16px 0;
+}
+
+.drawer-links li {
+  margin-bottom: 0;
 }
 
 .drawer-links a {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 8px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #1F2937;
+  gap: 24px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-body);
   border-radius: 8px;
-  transition: all 0.2s;
+  transition: color 0.2s;
+  text-transform: capitalize;
+  font-family: var(--font-main);
+  margin-bottom: 0;
 }
 
 .drawer-links a:hover,
 .drawer-links a.active {
-  background: white;
   color: var(--primary);
 }
 
 .drawer-links a img {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
-.drawer .btn {
-  margin-top: 28px;
-  width: 100%;
+.drawer-cta {
+  margin: 36px 16px 28px;
+  width: calc(100% - 32px);
+  max-width: 282px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
-/* ===== Responsive Breakpoints ===== */
-@media (max-width: 1024px) {
-  /* Navigation on Tablet */
+/* ===== Tablet (Figma 768px) ===== */
+@media (max-width: 1100px) {
+  /* ----- Nav ----- */
   .nav {
-    padding: 0 28px;
-    height: 84px;
+    padding: 0 24px;
+    height: 100px;
   }
-  
+
   .nav-links {
     display: none;
   }
-  
+
   .nav-right {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
   }
-  
+
   .btn-nav {
     display: inline-flex !important;
-    height: 38px;
-    padding: 0 20px;
-    font-size: 14px;
   }
 
   .burger-btn {
     display: flex !important;
-    padding: 6px;
   }
 
-  /* Hero Section on Tablet */
+  /* ----- Hero ----- */
+  /* Figma Tablet: section padding 49px top, 60px bottom, 66px sides */
   .hero-section {
-    padding: 40px 28px 60px;
+    padding: 49px 66px 60px;
   }
 
   .hero-container {
@@ -575,22 +729,26 @@ img {
     text-align: center;
     align-items: center;
     justify-content: center;
-    gap: 28px;
-    max-width: 680px;
+    max-width: 636px;
+    gap: 36px;
   }
 
   .hero-content {
     flex: none;
-    max-width: 100%;
+    width: 100%;
+    max-width: 636px;
+    margin-top: 0;
     align-items: center;
     text-align: center;
+    gap: 24px;
   }
 
+  /* Figma Tablet H1: 54px / 75px lh */
   .hero-title {
-    font-size: 44px;
+    font-size: 54px;
+    line-height: 75px;
     width: 100%;
-    line-height: 1.25;
-    max-width: 680px;
+    max-width: 588px;
     margin: 0 auto;
   }
 
@@ -599,230 +757,400 @@ img {
   }
 
   .hero-description {
-    font-size: 16px;
-    line-height: 1.65;
-    max-width: 580px;
+    font-size: 18px;
+    line-height: 32px;
+    max-width: 588px;
     text-align: center;
-    margin-top: 20px;
+    margin: 0 auto;
   }
 
+  /* Checklist stays left-aligned inside a centred wrapper */
   .hero-checklist {
     align-items: flex-start;
-    margin: 24px auto 28px;
-    gap: 12px;
+    width: fit-content;
+    margin: 0 auto;
+    gap: 8px;
   }
 
   .hero-checklist li {
-    font-size: 14.5px;
+    font-size: 18px;
+    line-height: 32px;
   }
 
   .hero-actions {
     justify-content: center;
-    gap: 16px;
+    gap: 24px;
+    width: 100%;
   }
 
-  .hero-actions .btn {
-    width: 180px;
-    height: 38px;
+  /* Keep both CTA buttons at their Figma width */
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline {
+    width: 213px;
   }
 
+  /* Hero art: centred, full container width */
   .hero-art-wrapper {
-    margin-left: 0;
+    flex: none;
     justify-content: center;
     width: 100%;
-    max-width: 540px;
-    margin-top: -15px;
-  }
-
-  .hero-art-wrapper img {
-    max-width: 100%;
-  }
-
-  /* Why Compliance Section on Tablet */
-  .why-section {
-    padding: 60px 28px 90px;
+    max-width: 636px;
     position: relative;
+  }
+
+  .hero-art-wrapper > img:first-child {
+    width: 100%;
+    max-width: 636px;
+    height: auto;
+  }
+
+  /* ----- Why Compliance Section (exported tablet frame) ----- */
+  .why-section {
+    padding: 50px 20px 67px;
+    overflow: visible;
   }
 
   .why-container {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "header"
-      "desc"
-      "visual"
-      "cards";
-    text-align: center;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 728px;
     row-gap: 20px;
-    max-width: 680px;
-    position: relative;
   }
 
-  .why-header {
-    text-align: center;
-    width: 100%;
+  .why-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 26px;
+    width: 603.5px;
+    max-width: 100%;
   }
 
   .why-title {
-    font-size: 43px;
-    line-height: 1.25;
+    width: 603.5px;
+    max-width: 100%;
+    margin: -1px 0 0;
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .why-break-mobile {
-    display: none;
-  }
-
-  .why-description-box {
-    text-align: center;
-    padding-top: 0;
+    font-family: var(--ta-h2-heading-font-family);
+    font-weight: var(--ta-h2-heading-font-weight);
+    font-size: var(--ta-h2-heading-font-size);
+    letter-spacing: var(--ta-h2-heading-letter-spacing);
+    line-height: var(--ta-h2-heading-line-height);
+    font-style: var(--ta-h2-heading-font-style);
   }
 
   .why-description {
-    font-size: 16px;
-    line-height: 1.65;
-    max-width: 600px;
-    width: 95%;
-    margin: 0 auto;
+    width: 603.5px;
+    max-width: 100%;
+    margin: -1px 0 0;
+    align-self: auto;
     text-align: center;
+    font-family: var(--ta-body-regular-font-family);
+    font-weight: var(--ta-body-regular-font-weight);
+    font-size: var(--ta-body-regular-font-size);
+    letter-spacing: var(--ta-body-regular-letter-spacing);
+    line-height: var(--ta-body-regular-line-height);
+    font-style: var(--ta-body-regular-font-style);
   }
 
   .why-visual-col {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 0 0px;
-  }
-
-  .feature-icon-wrapper img{
-    margin-top: -8px;
-  }
-
-  .curly-vector {
-    display: block !important;
-    position: absolute;
-    top: 5px;
-    right: 13%;
-    width: 32px;
+    width: 613.23px;
+    max-width: 100%;
+    height: 594px;
+    aspect-ratio: 1.03;
   }
 
   .why-visual-img {
-    width: 85%;
-    max-width: 400px;
-    margin: 60px 0 0 0px;
+    width: 594px;
+    max-width: 100%;
+    height: 594px;
+    margin: 0;
   }
 
   .why-cards-col {
     width: 100%;
-    margin-top: 10px;
-    gap: 16px;
-    position: relative;
+    max-width: 613.23px;
+    height: 594px;
+    margin-top: 0;
+    padding: 0;
+    gap: 40px;
+    justify-content: center;
     z-index: 2;
   }
 
   .feature-card {
     text-align: left;
-    padding: 20px 24px;
-    border: 1px solid var(--card-border);
-    background: var(--bg-card);
-    margin: 0 0 20px;
+    padding: 20px;
+    gap: 26px;
+    width: 100%;
   }
 
-  .feature-card:hover {
-    border-color: #2563EB;
+  .feature-title {
+    font-family: var(--ta-large-title-font-family);
+    font-weight: var(--ta-large-title-font-weight);
+    font-size: var(--ta-large-title-font-size);
+    letter-spacing: var(--ta-large-title-letter-spacing);
+    line-height: var(--ta-large-title-line-height);
+    font-style: var(--ta-large-title-font-style);
+    white-space: nowrap;
   }
 
-  .feature-desc{
-    padding: 0 50px 0 0;
+  .feature-desc {
+    height: 59px;
+    padding: 0;
+    font-family: var(--ta-body-regular-font-family);
+    font-weight: var(--ta-body-regular-font-weight);
+    font-size: var(--ta-body-regular-font-size);
+    letter-spacing: var(--ta-body-regular-letter-spacing);
+    line-height: var(--ta-body-regular-line-height);
+    font-style: var(--ta-body-regular-font-style);
   }
 
-  /* Chevron icon positioned directly upside the feature cards in tablet view */
-  .why-cards-col .why-bottom-arrows {
-    position: static;
-    width: 110px;
-
-    margin: 0 0 16px 0;
-    align-self: flex-start;
+  .why-section-chevrons {
     display: block;
+    position: absolute;
+    bottom: 570px;
+    left: -20px;        /* pull to the left edge of the 20px-padded section */
+    width: 100px;
+    height: auto;
     opacity: 0.9;
+    pointer-events: none;
   }
 }
-
 @media (max-width: 600px) {
+  /* ----- Nav ----- */
+  /* Figma Mobile: nav height 54px, padding 0 16px, white bg */
   .nav {
-    padding: 0 20px;
-    height: 72px;
-    background-color: white;
+    padding: 0 16px;
+    height: 54px;
+    background-color: #ffffff;
   }
+
+  .nav-brand img {
+    height: 34px;
+    width: auto;
+  }
+
+  /* Hide Contact Us button on mobile, show only burger */
   .btn-nav {
     display: none !important;
   }
+
+  .burger-btn img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* ----- Hero Section ----- */
+  /* Figma Mobile: 26px top, 16px sides, 50px bottom */
   .hero-section {
-    padding: 24px 20px 50px;
+    padding: 26px 16px 50px;
   }
+
+  .hero-container {
+    gap: 32px;
+    max-width: 100%;
+  }
+
+  .hero-content {
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Figma Mobile H1: 38px / 48px lh */
   .hero-title {
-    font-size: 32px;
-    line-height: 1.3;
+    font-size: 38px;
+    line-height: 48px;
+    width: 100%;
+    max-width: 100%;
   }
-  .hero-title-break {
-    display: block;
-  }
+
   .hero-description {
-    font-size: 15px;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+    max-width: 100%;
   }
+
+  /* Checklist: left-aligned block centred in the column */
+  .hero-checklist {
+    width: 100%;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0 4px;
+  }
+
+  .hero-checklist li {
+    font-size: 16px;
+    line-height: 28px;
+    gap: 12px;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Buttons: stack vertically, full width */
   .hero-actions {
     width: 100%;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
+    align-items: stretch;
   }
-  .hero-actions .btn {
+
+  .hero-actions .btn,
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline {
     width: 100%;
+    font-size: 16px;
+    height: 46px;
   }
+
+  /* Hero art: full width */
   .hero-art-wrapper {
+    width: 100%;
     max-width: 100%;
   }
+
+  .hero-art-wrapper > img:first-child {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ----- Why Compliance Section ----- */
+  /* Figma Mobile: 50px top, 16px sides, 50px bottom + room for chevron */
   .why-section {
-    padding: 60px 20px 80px;
+    padding: 50px 16px 67px;
+    overflow: visible;
   }
-  .why-title {
-    font-size: 28px;
-    line-height: 1.3;
+
+  .why-container {
+    gap: 20px;
     max-width: 100%;
-    margin: 0 auto;
+  }
+
+  .why-intro {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .why-title {
+    width: 100%;
+    margin: 0;
     text-align: center;
+    font-family: var(--mo-h2-heading-font-family);
+    font-weight: var(--mo-h2-heading-font-weight);
+    font-size: var(--mo-h2-heading-font-size);
+    letter-spacing: var(--mo-h2-heading-letter-spacing);
+    line-height: var(--mo-h2-heading-line-height);
+    font-style: var(--mo-h2-heading-font-style);
   }
-  .why-break-mobile {
-    display: block;
-  }
+
   .curly-vector {
-    display: none !important;
+    top: 1%;
+    left: auto;
+    right: 4%;
+    width: 26px;
+    height: auto;
   }
+
+  .why-description {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: var(--mo-body-regular-font-family);
+    font-weight: var(--mo-body-regular-font-weight);
+    font-size: var(--mo-body-regular-font-size);
+    letter-spacing: var(--mo-body-regular-letter-spacing);
+    line-height: var(--mo-body-regular-line-height);
+    font-style: var(--mo-body-regular-font-style);
+  }
+
+  .why-visual-col {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
   .why-visual-img {
-    width: 80%;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
   }
+
+  .why-cards-col {
+    gap: 20px;
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
   .feature-card {
-    padding: 20px 18px;
-  }
-  .drawer-links{
-    margin: 25px 0;
-    gap: 25px;
+    padding: 16px;
+    gap: 16px;
   }
 
-  .why-description{
-    font-size: 15px;
-    padding: 0 16px 0;
+  .feature-title {
+    font-family: var(--mo-large-title-font-family);
+    font-weight: var(--mo-large-title-font-weight);
+    font-size: var(--mo-large-title-font-size);
+    letter-spacing: var(--mo-large-title-letter-spacing);
+    line-height: var(--mo-large-title-line-height);
+    font-style: var(--mo-large-title-font-style);
+    white-space: normal;
   }
 
-  .why-bottom-arrows {
-    left: 20px;
-    width: 75px;
+  .feature-desc {
+    height: auto;
+    padding: 0;
+    font-family: var(--mo-body-regular-font-family);
+    font-weight: var(--mo-body-regular-font-weight);
+    font-size: var(--mo-body-regular-font-size);
+    letter-spacing: var(--mo-body-regular-letter-spacing);
+    line-height: var(--mo-body-regular-line-height);
+    font-style: var(--mo-body-regular-font-style);
   }
 
-  .highlight-underline{
+  .feature-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  .feature-icon-wrapper img {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* ----- Drawer (mobile width 327px) ----- */
+  .drawer {
+    width: min(327px, 90vw);
+  }
+
+  .drawer-links {
+    gap: 32px;
+    padding: 40px 16px 0;
+  }
+
+  .drawer-links a {
+    font-size: 16px;
+    gap: 20px;
+  }
+
+  .drawer-cta {
+    font-size: 16px;
+    margin: 32px 16px 24px;
+  }
+
+  /* Underline offset tweak for smaller title */
+  .highlight-underline {
     width: 85%;
     left: 15px;
     bottom: -9px;
@@ -830,11 +1158,14 @@ img {
     transform: rotate(-2deg);
   }
 
-  .feature-desc{
-    padding: 0 38px 0 0;
-  }
-
-  .feature-icon-wrapper img{
-    margin-top: -31px;
+  .why-section-chevrons {
+    display: block;
+    position: absolute;
+    bottom: 580px;
+    left: -16px;        /* pull to the left edge of the 16px-padded section */
+    width: 80px;
+    height: auto;
+    opacity: 0.9;
+    pointer-events: none;
   }
 }
