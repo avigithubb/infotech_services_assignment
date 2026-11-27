@@ -203,8 +203,15 @@ img {
   display: flex;
   align-items: center;
   gap: 26px;
-  width: 630px;
+  width: calc(630px - (1440px - 100vw) * 0.5);
+  max-width: 630px;
+  min-width: 0;
   list-style: none;
+}
+
+.nav-links li {
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .nav-links a {
@@ -258,7 +265,7 @@ img {
   background: var(--bg-hero);
   position: relative;
   overflow: hidden;
-  padding: 56px 23px 66px 72px;
+  padding: 0px 23px 66px 72px;
 }
 
 .hero-container {
@@ -269,6 +276,17 @@ img {
   justify-content: space-between;
   position: relative;
 }
+/* 
+.hero-container {
+    width: 100%;
+    max-width: 1345px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+} */
 
 .hero-content {
   display: flex;
@@ -279,8 +297,17 @@ img {
   flex: 0 1 606px;
   max-width: 606px;
   max-height: 583px;
-  margin-top: 80px;           /* 180 - 156 */
+  margin-top: 80px;           
 }
+
+/* .hero-content {
+    flex: 0 0 45%;
+    max-width: 606px;
+    min-width: 0;
+    margin-top: 80px;
+    position: relative;
+    z-index: 5;
+} */
 
 .hero-title {
   font-size: 64px;
@@ -293,6 +320,17 @@ img {
   width: 620px;
   max-width: calc(100% + 14px);
 }
+
+/* .hero-art-wrapper {
+    flex: 1 1 55%;
+    min-width: 0;
+    max-width: 739.13px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 56px;
+} */
 
 .hero-title-break {
   display: none;
@@ -317,7 +355,6 @@ img {
 .hero-description {
   font-size: 18px;
   line-height: 32px;
-  margin-top: 26px;
   width: 606px;
   color: #000000;
   font-weight: 400;
@@ -354,10 +391,8 @@ img {
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
   flex-wrap: wrap;
-  margin-top: 26px;
-  margin-right: 156px;
 }
 
 .hero-actions .btn-primary,
@@ -365,17 +400,28 @@ img {
   width: 213px;               /* both buttons are 213px wide in Figma */
 }
 
-/* ===== Hero Art ===== */
 .hero-art-wrapper {
   position: relative;
   flex: 0 1 739.13px;
   max-width: 739.13px;
   min-width: 0;
-  margin-top: 56px;
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 56px;
 }
+
+/* .hero-art-wrapper {
+    flex: 1 1 55%;
+    min-width: 0;
+    max-width: 739.13px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 56px;
+} */
 
 /* Figma banner (illustration + trust badges) is 739.13 x 607 */
 .hero-art-wrapper > img:first-child {
@@ -387,13 +433,21 @@ img {
   pointer-events: none;
 }
 
+/* .hero-art-wrapper > img:first-child {
+    width: 100%;
+    height: auto;
+    max-width: 739.13px;
+    object-fit: contain;
+    display: block;
+} */
+
 /* ===== Why Compliance Section =====
    Desktop keeps the 1440 frame (title | description, illustration | cards).
    Tablet uses the exported frame: a centred column, 20px gaps,
    a 603.5px intro, a 613.23×594 illustration, and cards centred in 594px. */
 .why-section {
   background: #ffffff;
-  padding: 50px 100px;
+  padding: 50px 82px 100px;
   position: relative;
   overflow: hidden;
 }
@@ -401,8 +455,7 @@ img {
 .why-container {
   width: 100%;
   max-width: 1240px;
-  margin: 0 auto;
-  margin-left: 100px;
+  margin: 0 0;
   display: grid;
   grid-template-columns: minmax(0, 603.5px) minmax(0, 603.5px);
   grid-template-areas:
@@ -421,7 +474,7 @@ img {
   display: contents;
 }
 
-.why-title {
+/* .why-title {
   grid-area: header;
   display: block;
   width: 100%;
@@ -436,6 +489,26 @@ img {
   font-style: var(--des-h2-heading-font-style);
   color: #000000;
   text-transform: capitalize;
+} */
+
+.why-title {
+    grid-area: header;
+    display: block;
+    position: relative; /* ADD THIS */
+
+    width: 100%;
+    max-width: 603.5px;
+    max-height: 140px;
+    margin-top: -1px;
+
+    font-family: var(--des-h2-heading-font-family);
+    font-weight: var(--des-h2-heading-font-weight);
+    font-size: var(--des-h2-heading-font-size);
+    letter-spacing: var(--des-h2-heading-letter-spacing);
+    line-height: var(--des-h2-heading-line-height);
+    font-style: var(--des-h2-heading-font-style);
+    color: #000000;
+    text-transform: capitalize;
 }
 
 .why-title .accent {
@@ -467,43 +540,73 @@ img {
   text-transform: capitalize;
 }
 
-.why-visual-col {
+/* .why-visual-col {
   grid-area: visual;
   position: relative;
   width: 100%;
   max-width: 594px;
   aspect-ratio: 1;
+} */
+
+.why-visual-col {
+    position: relative;
+    width: 100%;
+    max-width: 594px;
+    aspect-ratio: 1 / 1.1;
 }
 
-.why-visual-img {
+/* .why-visual-img {
   width: 100%;
   max-width: 594px;
   height: 100%;
   display: block;
   object-fit: contain;
   object-position: left top;
+} */
+
+.why-visual-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 79.87px;
+    object-fit: contain;
+    object-position: bottom right;
 }
 
 /* path-20605 sits on the top-right of the illustration (left 535 / width 34 on a 613px group) */
-.curly-vector {
+/* .curly-vector {
   position: absolute;
   top: 90.5px;
   left: 500.56px;
   width: 40.39px;
-  height: 88.67px;
   transform-origin: center center;
   pointer-events: none;
   z-index: 5;
-}
+} */
+
+.curly-vector {
+    position: absolute;
+    width: clamp(23px, 2.8vw, 40.39px);
+    height: auto;
+
+    top: calc(110.5px - (1440px - 100vw) * -0.3);
+    left: calc(500.56px - (1440px - 100vw) * 0.15);
+
+    transform-origin: center;
+    pointer-events: none;
+    z-index: 5;
+  }
 
 .why-section-chevrons {
-  position: absolute;
-  bottom: -17px;
-  left: calc(-1 * max(100px, (100vw - 1240px) / 2));
-  width: 137.33px;
-  height: 34.17px;
-  opacity: 0.9;
-  pointer-events: none;
+    position: absolute;
+    bottom: -20px;
+    left: -80px;
+    width: 137.33px;
+    height: 34.17px;
+    opacity: 0.9;
+    pointer-events: none;
 }
 
 /* Cards fill a 594px-tall column, centred, 40px apart */
@@ -754,7 +857,7 @@ img {
     margin-top: 0;
     align-items: center;
     text-align: center;
-    gap: 24px;
+    gap: 26px;
   }
 
   /* Figma Tablet H1: 54px / 75px lh */
@@ -762,7 +865,7 @@ img {
     font-size: 54px;
     line-height: 75px;
     width: 100%;
-    max-width: 588px;
+    max-width: 636px;
     margin: 0 auto;
   }
 
@@ -813,6 +916,7 @@ img {
     max-width: 739.13px;
     height: 607px;
     position: relative;
+    margin-top: 0px;
   }
 
   .hero-art-wrapper > img:first-child {
@@ -823,7 +927,7 @@ img {
 
   /* ----- Why Compliance Section (exported tablet frame) ----- */
   .why-section {
-    padding: 50px 82px 100px;
+    padding: 50px 134.77px 50px 20px;
     overflow: visible;
   }
 
@@ -889,6 +993,8 @@ img {
     height: auto;
     margin: 0 auto;
     display: block;
+    padding: 79.6px;
+    padding-bottom: 0px;
   }
 
   .why-cards-col {
@@ -900,7 +1006,7 @@ img {
     gap: 40px;
     justify-content: center;
     z-index: 2;
-    margin: 0 auto;
+    margin: 44px 0px;
   }
 
   .feature-card {
@@ -924,6 +1030,7 @@ img {
   .feature-desc {
     height: auto;
     padding: 0;
+    width: 513px;
     font-family: var(--ta-body-regular-font-family);
     font-weight: var(--ta-body-regular-font-weight);
     font-size: var(--ta-body-regular-font-size);
@@ -935,21 +1042,31 @@ img {
   .why-section-chevrons {
     display: block;
     position: absolute;
-    bottom: 510px;
-    left: 30px;
+    bottom: 570px;
+    left: -20px;
     width: 115px;
     height: auto;
     opacity: 0.9;
     pointer-events: none;
   }
 
-  .curly-vector {
+  /* .curly-vector {
     position: absolute;
     width: 30.39px;
     height: 88.67px;
     right: 50px;
     top: 290px;
     left: auto;
+  } */
+
+  .curly-vector {
+    width: 30.39px;
+    height: auto;
+
+    top: calc(240px - (1440px - 100vw) * -0.1);
+    left: auto;
+    bottom: -20px;
+    right: 30px;
   }
 }
 @media (max-width: 600px) {
@@ -979,7 +1096,7 @@ img {
   /* ----- Hero Section ----- */
   /* Figma Mobile: 26px top, 16px sides, 50px bottom */
   .hero-section {
-    padding: 26px 16px 50px;
+    padding: 26px 16px 19.87px;
   }
 
   .hero-container {
@@ -1004,7 +1121,7 @@ img {
   }
 
   .hero-description {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 28px;
     text-align: center;
     max-width: 100%;
@@ -1012,17 +1129,17 @@ img {
 
   /* Checklist: left-aligned block centred in the column */
   .hero-checklist {
-    width: 466px;
+    width: 315px;
     align-items: flex-start;
+    text-align: left;
     gap: 6px;
-    padding: 0 4px;
-    margin-top: 26px;
   }
 
   .hero-checklist li {
+    align-items: flex-start;
+    gap: 12px;
     font-size: 16px;
     line-height: 28px;
-    gap: 12px;
   }
 
   .check-icon {
@@ -1036,8 +1153,8 @@ img {
     flex-direction: column;
     gap: 14px;
     align-items: stretch;
-    margin-top: 20px;
     margin-right: 0;
+    margin-top: 0px;
   }
 
   .hero-actions .btn,
@@ -1050,13 +1167,15 @@ img {
 
   /* Hero art: full width */
   .hero-art-wrapper {
+    
     width: 100%;
     max-width: 100%;
+    height: 296.13px;
   }
 
   .hero-art-wrapper > img:first-child {
     width: 100%;
-    height: auto;
+    /* height: 296.13px; */
   }
 
   /* ----- Why Compliance Section ----- */
@@ -1092,13 +1211,24 @@ img {
     position: relative;
   }
 
-  .curly-vector {
+  /* .curly-vector {
     display: block !important;
     width: 23.7px;
-    height: 63.83px;
     right: 10px;
     top: 430px;
     left: auto;
+  } */
+
+  .curly-vector {
+    display: block;
+    width: 23.7px;
+    height: auto;
+
+    top: calc(135.87px - (1440px - 100vw) * -0.3);
+    left: auto;
+    bottom: -15px;
+    right: 10px;
+
   }
 
   .why-description {
@@ -1119,13 +1249,14 @@ img {
     max-width: 100%;
     margin-top: 6rem;
     height: auto;
-    aspect-ratio: auto;
+    aspect-ratio: 1/calc(1.2 + (1440px - 100vw) * 0.0005);
   }
 
   .why-visual-img {
     width: 100%;
-    height: auto;
-    max-width: 100%;
+        max-width: 100%;
+        padding: 79.87px;
+        padding-bottom: 40px;
   }
 
   .why-cards-col {
@@ -1134,6 +1265,7 @@ img {
     height: auto;
     min-height: auto;
     padding: 0;
+    margin: 0px;
   }
 
   .feature-card {
@@ -1156,6 +1288,7 @@ img {
   .feature-desc {
     height: auto;
     padding: 0;
+    width: 241px;
     font-family: var(--mo-body-regular-font-family);
     font-weight: var(--mo-body-regular-font-weight);
     font-size: var(--mo-body-regular-font-size);
